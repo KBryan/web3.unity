@@ -3,7 +3,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
-// using Nethereum.Web3;
+using Nethereum.Web3;
 
 public class EVM
 {
@@ -140,14 +140,14 @@ public class EVM
     return data.response;
   }
 
-  // public static string SignTransaction(string _privateKey, string _account, string _amount, string _nonce, string _gasPrice, string _gasLimit, string _data) {
-  //   BigInteger amount = BigInteger.Parse(_amount);
-  //   BigInteger nonce = BigInteger.Parse(_nonce);
-  //   BigInteger gasPrice = BigInteger.Parse(_gasPrice);
-  //   BigInteger gasLimit = BigInteger.Parse(_gasLimit);
-  //   string signedTransaction = "0x" + Web3.OfflineTransactionSigner.SignTransaction(_privateKey, _account, amount, nonce, gasPrice, gasLimit, _data);
-  //   return signedTransaction;
-  // }
+  public static string SignTransaction(string _privateKey, string _account, string _amount, string _nonce, string _gasPrice, string _gasLimit, string _data) {
+    BigInteger amount = BigInteger.Parse(_amount);
+    BigInteger nonce = BigInteger.Parse(_nonce);
+    BigInteger gasPrice = BigInteger.Parse(_gasPrice);
+    BigInteger gasLimit = BigInteger.Parse(_gasLimit);
+    string signedTransaction = "0x" + Web3.OfflineTransactionSigner.SignTransaction(_privateKey, _account, amount, nonce, gasPrice, gasLimit, _data);
+    return signedTransaction;
+  }
 
   public static async Task<string> BroadcastTransaction(string _chain, string _network, string _signedTransaction, string _rpc = "")
   {

@@ -34,7 +34,7 @@ public class ERC1155
         string response = await EVM.Call(_chain, _network, _contract, abi, method, args, _rpc);
         try 
         {
-            string[] responses = JsonConvert.DeserializeObject<string[]>(response);
+            string[] responses = response.Split(',');
             List<BigInteger> balances = new List<BigInteger>();
             for (int i = 0; i < responses.Length; i++)
             {
